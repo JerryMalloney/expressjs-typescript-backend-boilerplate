@@ -1,4 +1,5 @@
 import { BcryptAdapter } from "../../config/bcrypt.adapter";
+import { JsonWebTokenAdapter } from "../../config/jsonwebtoken.adapter";
 import { CustomError, LoginUserDto, User } from "../../domain";
 import { RegisterUserDto } from "../../domain/dtos/auth/register-user.dto";
 import { UserRepositoryImpl } from "../../infrastructure/repositories/user.repository.impl";
@@ -20,9 +21,13 @@ export class AuthService {
     const { password, ...userEntity } = User.fromObject(user);
 
     // generate access jwt
-    // TODO
 
-    return userEntity;
+    const token = await JsonWebTokenAdapter.generateToken({
+      id: userEntity.id,
+      email: userEntity.email,
+    });
+
+    return { user: userEntity, token };
   }
 
   public async registerUser(registerUserDto: RegisterUserDto) {
