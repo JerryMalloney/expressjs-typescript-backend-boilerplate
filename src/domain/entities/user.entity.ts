@@ -2,18 +2,20 @@ import { CustomError } from "../errors/custom.error";
 
 export class User {
   constructor(
-    public id: string,
+    public id: number,
+    public email: string,
     public firstName: string,
     public lastName: string,
     public emailValidated: boolean,
     public password: string,
-    public role: string[],
+    public role: string,
     public img?: string
   ) {}
 
   static fromObject(object: { [key: string]: any }): User {
     const {
       id,
+      email,
       firstName,
       lastName,
       emailValidated = false,
@@ -22,10 +24,19 @@ export class User {
     } = object;
 
     if (!id) throw CustomError.badRequest("no id provided");
+    if (!email) throw CustomError.badRequest("no email provided");
     if (!firstName) throw CustomError.badRequest("no first name provided");
     if (!lastName) throw CustomError.badRequest("no last name provided");
     if (!password) throw CustomError.badRequest("no password provided");
 
-    return new User(id, firstName, lastName, emailValidated, password, role);
+    return new User(
+      id,
+      email,
+      firstName,
+      lastName,
+      emailValidated,
+      password,
+      role
+    );
   }
 }

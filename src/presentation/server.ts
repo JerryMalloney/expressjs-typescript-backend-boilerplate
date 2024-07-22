@@ -6,6 +6,7 @@ export class Server {
 
   start() {
     this.app.use(express.json()); // raw
+    this.app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
 
     this.app.use(this.routes);
 
