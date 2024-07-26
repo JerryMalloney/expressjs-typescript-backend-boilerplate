@@ -16,7 +16,6 @@ export class AuthRoutes {
     //here we define the routes
 
     router.post("/login", authController.loginUser);
-    // router.post("/logout", authController.loginUser);
     router.post("/register", authController.registerUser);
 
     router.post(

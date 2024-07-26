@@ -6,11 +6,11 @@ export class UpdateUserDto {
   ) {}
 
   static create(object: { [key: string]: any }): [string?, UpdateUserDto?] {
-    const { id, firstname, lastName } = object;
+    const { id, firstName, lastName } = object;
     if (!id) return ["Missing id"];
-    if (!firstname) return ["Missing email name"];
-    if (!lastName) return ["Missing password name"];
+    if (!firstName) return ["Missing first name"];
+    if (!lastName) return ["Missing last name"];
 
-    return [undefined, new UpdateUserDto(id, firstname, lastName)];
+    return [undefined, new UpdateUserDto(id, firstName, lastName)];
   }
 }

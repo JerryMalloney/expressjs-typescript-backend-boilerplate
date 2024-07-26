@@ -9,19 +9,19 @@ import {
 export class UserRepositoryImpl implements UserRepository {
   constructor(private readonly userDatasource: UserDatasource) {}
   async getUsers(): Promise<User[]> {
-    return this.userDatasource.getUsers();
+    return await this.userDatasource.getUsers();
   }
   async getUserById(id: number): Promise<User | null> {
-    return this.userDatasource.getUserById(id);
+    return await this.userDatasource.getUserById(id);
   }
   async getUserByEmail(email: string): Promise<User | null> {
-    return this.userDatasource.getUserByEmail(email);
+    return await this.userDatasource.getUserByEmail(email);
   }
-  saveUser(user: RegisterUserDto): Promise<boolean> {
-    return this.userDatasource.saveUser(user);
+  async saveUser(user: RegisterUserDto): Promise<boolean> {
+    return await this.userDatasource.saveUser(user);
   }
-  updateUser(user: UpdateUserDto): Promise<User> {
-    throw new Error("Method not implemented.");
+  async updateUser(user: UpdateUserDto): Promise<User> {
+    return await this.userDatasource.updateUser(user);
   }
   deleteUser(user: User): Promise<User> {
     throw new Error("Method not implemented.");
