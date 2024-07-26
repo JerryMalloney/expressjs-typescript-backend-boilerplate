@@ -1,5 +1,6 @@
 import {
   RegisterUserDto,
+  UpdateUserDto,
   User,
   UserDatasource,
   UserRepository,
@@ -19,7 +20,7 @@ export class UserRepositoryImpl implements UserRepository {
   saveUser(user: RegisterUserDto): Promise<boolean> {
     return this.userDatasource.saveUser(user);
   }
-  updateUser(user: User): Promise<User> {
+  updateUser(user: UpdateUserDto): Promise<User> {
     throw new Error("Method not implemented.");
   }
   deleteUser(user: User): Promise<User> {

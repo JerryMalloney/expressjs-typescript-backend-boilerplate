@@ -1,5 +1,10 @@
 import { PrismaClient } from "@prisma/client";
-import { RegisterUserDto, User, UserDatasource } from "../../domain";
+import {
+  RegisterUserDto,
+  UpdateUserDto,
+  User,
+  UserDatasource,
+} from "../../domain";
 
 const prisma = new PrismaClient();
 
@@ -30,8 +35,15 @@ export class PostgresUserDatasource implements UserDatasource {
     });
     return true;
   }
-  updateUser(user: User): Promise<User> {
-    throw new Error("Method not implemented.");
+  async updateUser(user: UpdateUserDto): Promise<User> {
+    const result = await prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: user,
+    });
+
+    return User.fromObject(result);
   }
   deleteUser(user: User): Promise<User> {
     throw new Error("Method not implemented.");
