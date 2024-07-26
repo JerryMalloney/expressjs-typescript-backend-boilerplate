@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
 import { PostgresUserDatasource } from "../../infrastructure/datasources/postgres-user.datasource";
 import { UserRepositoryImpl } from "../../infrastructure/repositories/user.repository.impl";
 import { AuthMiddleware } from "../middlewares/auth.middleware";
@@ -16,13 +16,16 @@ export class AuthRoutes {
     //here we define the routes
 
     router.post("/login", authController.loginUser);
-    router.post(
-      "/logintest",
-      [authMiddleware.validateJWT],
-      authController.loginUser
-    );
     // router.post("/logout", authController.loginUser);
     router.post("/register", authController.registerUser);
+
+    router.post(
+      "/test",
+      [authMiddleware.validateJWT],
+      (req: Request, res: Response) => {
+        res.status(200).json("ok");
+      }
+    );
 
     // router.post("/validate-email");
 
