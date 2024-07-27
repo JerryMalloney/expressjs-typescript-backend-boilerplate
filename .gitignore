@@ -7,7 +7,7 @@ dist/
 postgres/
 .env
 
-
+*.log
 
 ### Linux ###
 *~

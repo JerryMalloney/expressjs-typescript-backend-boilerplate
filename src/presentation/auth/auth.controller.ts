@@ -4,6 +4,7 @@ import { ErrorHandler } from "../shared/errorHandler";
 import { AuthService } from "./auth.service";
 
 export class AuthController {
+  private errorSource = "authService";
   constructor(public readonly authService: AuthService) {}
 
   loginUser = (req: Request, res: Response) => {
@@ -13,18 +14,21 @@ export class AuthController {
     this.authService
       .loginUser(loginUserDto!)
       .then((result) => res.json(result))
-      .catch((error) => ErrorHandler.handle(error, res));
+      .catch((error) => {
+        ErrorHandler.handle(error, res, this.errorSource);
+      });
   };
 
   registerUser = (req: Request, res: Response) => {
     // create user with dto
     const [error, registerUserDto] = RegisterUserDto.create(req.body);
     if (error) return res.status(400).json(error);
-
+    // register user with service and return response
     this.authService
       .registerUser(registerUserDto!)
       .then((result) => res.json(result))
-      .catch((error) => ErrorHandler.handle(error, res));
-    // register user with service and return response
+      .catch((error) => {
+        ErrorHandler.handle(error, res, this.errorSource);
+      });
   };
 }
