@@ -23,7 +23,7 @@ export class UserRepositoryImpl implements UserRepository {
   async updateUser(user: UpdateUserDto): Promise<User> {
     return await this.userDatasource.updateUser(user);
   }
-  deleteUser(user: User): Promise<User> {
-    throw new Error("Method not implemented.");
+  async deleteUser(id: number): Promise<User> {
+    return await this.userDatasource.deleteUser(id);
   }
 }

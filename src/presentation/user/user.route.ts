@@ -30,7 +30,11 @@ export class UserRoutes {
       userController.updateUser
     );
     // delete user
-    router.delete(":id");
+    router.delete(
+      "/:id",
+      [authMiddleware.validateJWT],
+      userController.deleteUser
+    );
 
     return router;
   }

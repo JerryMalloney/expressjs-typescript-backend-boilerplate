@@ -9,6 +9,7 @@ export class User {
     public emailValidated: boolean,
     public password: string,
     public role: string,
+    public disabled: boolean,
     public img?: string
   ) {}
 
@@ -21,6 +22,7 @@ export class User {
       emailValidated = false,
       password,
       role,
+      disabled = false,
     } = object;
 
     if (!id) throw CustomError.badRequest("no id provided");
@@ -36,7 +38,8 @@ export class User {
       lastName,
       emailValidated,
       password,
-      role
+      role,
+      disabled
     );
   }
 }

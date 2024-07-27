@@ -45,7 +45,16 @@ export class PostgresUserDatasource implements UserDatasource {
 
     return User.fromObject(result);
   }
-  deleteUser(user: User): Promise<User> {
-    throw new Error("Method not implemented.");
+  async deleteUser(id: number): Promise<User> {
+    const result = await prisma.user.update({
+      where: {
+        id: id,
+      },
+      data: {
+        disabled: true,
+      },
+    });
+
+    return User.fromObject(result);
   }
 }

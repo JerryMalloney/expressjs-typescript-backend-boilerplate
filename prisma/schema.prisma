@@ -26,4 +26,5 @@ model User {
   emailValidated Boolean @default(false)
   password String
   role Roles @default(user)
+  disabled Boolean @default(false)
 }

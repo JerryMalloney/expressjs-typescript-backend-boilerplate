@@ -8,5 +8,5 @@ export abstract class UserDatasource {
   abstract getUserByEmail(email: string): Promise<User | null>;
   abstract saveUser(user: RegisterUserDto): Promise<boolean>;
   abstract updateUser(user: UpdateUserDto): Promise<User>;
-  abstract deleteUser(user: User): Promise<User>;
+  abstract deleteUser(id: number): Promise<User>;
 }
