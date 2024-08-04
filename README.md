@@ -17,3 +17,5 @@ npx prisma migrate dev --name init
 ```
 
 6. run "npm run dev" to start the project in development
+
+to use the project documentation "NODE_DEV" has to be set to "development"
