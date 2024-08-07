@@ -14,3 +14,16 @@ export class AppRoutes {
     return router;
   }
 }
+
+/**
+ * @swagger
+ * tags:
+ *   name: Auth
+ *   description: Authentication
+ * components:
+ *  securitySchemes:
+ *    bearerAuth:
+ *      type: http
+ *      scheme: bearer
+ *      bearerFormat: JWT
+ */

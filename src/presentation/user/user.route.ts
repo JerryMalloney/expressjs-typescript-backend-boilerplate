@@ -39,3 +39,87 @@ export class UserRoutes {
     return router;
   }
 }
+
+/**
+ * @swagger
+ * tags:
+ *   name: User
+ */
+
+/**
+ * @swagger
+ * /api/user/:
+ *   get:
+ *     summary: Get all users
+ *     tags: [User]
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
+
+/**
+ * @swagger
+ * /api/user/{id}:
+ *   get:
+ *     summary: get a user
+ *     tags: [User]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        schema:
+ *          type: number
+ *     responses:
+ *       "200":
+ *         description: Ok
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
+
+/**
+ * @swagger
+ * /api/user/{id}:
+ *   patch:
+ *     summary: update partially or totally a user
+ *     tags: [User]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        schema:
+ *          type: number
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
+
+/**
+ * @swagger
+ * /api/user/{id}:
+ *   delete:
+ *     summary: delete a user
+ *     tags: [User]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        schema:
+ *          type: number
+ *     responses:
+ *       "200":
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
